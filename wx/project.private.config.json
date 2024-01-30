@@ -3,5 +3,19 @@
   "projectname": "wx",
   "setting": {
     "compileHotReLoad": true
+  },
+  "libVersion": "3.3.3",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/register/register",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

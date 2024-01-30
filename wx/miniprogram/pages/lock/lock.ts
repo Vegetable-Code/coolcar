@@ -1,66 +1,29 @@
-// pages/lock/lock.ts
+import { IAppOption } from "../../appoption"
+
+const shareLocationKey = 'share_location'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    avatarURL: '',
+    shareLocation: true,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
-
+  async onLoad() {
+    const userInfo = await getApp<IAppOption>().globalData.userInfo
+    this.setData({
+      avatarURL: userInfo.avatarUrl,
+      shareLocation: wx.getStorageSync(shareLocationKey) || false
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  onGetUserInfo(e: any) {
+    console.log(e)
+    const userInfo: WechatMiniprogram.UserInfo = e.detail.userInfo
+    if (userInfo) {
+      getApp<IAppOption>().resolveUserInfo(userInfo)
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  onShareLocation(e: any) {
+    const shareLocation: boolean = e.detail.value
+    wx.setStorageSync('share_location', shareLocation)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
+  onUnlockTap() { },
 })

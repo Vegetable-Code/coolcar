@@ -10,7 +10,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/register/register",
+          "pathName": "pages/lock/lock",
           "query": "",
           "launchMode": "default",
           "scene": null

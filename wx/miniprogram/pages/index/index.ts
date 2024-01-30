@@ -1,7 +1,9 @@
+import { IAppOption } from "../../appoption"
 
 Page({
   isPageShowing: false,
   data: {
+    avatarURL: '',
     setting: {
       skew: 0,
       rotate: 0,
@@ -43,8 +45,12 @@ Page({
     ],
   },
 
-  onShow() {
+  async onShow() {
     this.isPageShowing = true
+    const userInfo = await getApp<IAppOption>().globalData.userInfo
+    this.setData({
+      avatarURL: userInfo.avatarUrl,
+    })
   },
 
   onHide() {

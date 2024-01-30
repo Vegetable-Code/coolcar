@@ -1,9 +1,10 @@
 <map id="map" latitude="{{location.latitude}}" longitude="{{location.longitude}}" scale="{{scale}}" setting="{{setting}}" enable-overlooking="{{isOverLooking}}" enable-3D="{{is3D}}" markers="{{markers}}">
   <cover-view class="icon-container">
-    <cover-image src="/resources/account.png">my profile icon</cover-image>
+    <cover-image wx:if="{{!avatarURL}}" src="/resources/account.png">my profile icon</cover-image>
+    <cover-image class="round" wx:if="{{avatarURL}}" src="{{avatarURL}}">my profile icon</cover-image>
     <cover-view bindtap="onMyLocationTap">
       <cover-image src="/resources/my_location.png">my location icon</cover-image>
     </cover-view>
   </cover-view>
   <cover-view class="btn-container bg-grey round" bindtap="onScanClicked">扫码租车</cover-view>
-</map>    
+</map>

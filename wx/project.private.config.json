@@ -5,17 +5,5 @@
     "compileHotReLoad": true
   },
   "libVersion": "3.3.3",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "",
-          "pathName": "pages/lock/lock",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        }
-      ]
-    }
-  }
+  "condition": {}
 }

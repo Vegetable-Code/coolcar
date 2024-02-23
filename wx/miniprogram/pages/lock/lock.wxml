@@ -7,13 +7,11 @@
         </view>
     </view>
     <view class="avatar-container">
-        <button wx:if="{{!avatarURL}}" class="cu-avatar round lg bg-grey margin-xs"
-            open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
+        <button wx:if="{{!avatarURL}}" class="cu-avatar round lg bg-grey margin-xs" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">
             <text class="cuIcon-people"></text>
         </button>
         <view wx:if="{{avatarURL}}" class="switch-container">
-            <image class="cu-avatar round lg bg-grey margin-xs"
-                src="{{avatarURL}}"/>
+            <image class="cu-avatar round lg bg-grey margin-xs" src="{{avatarURL}}" />
             <switch bindchange="onShareLocation" checked="{{shareLocation}}" />
         </view>
         <view class="margin-top">实时展示我的头像</view>

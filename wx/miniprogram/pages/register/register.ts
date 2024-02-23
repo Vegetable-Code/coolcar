@@ -1,3 +1,5 @@
+import { routing } from "../../utils/routing"
+
 Page({
   data: {
     name: '',
@@ -5,10 +7,18 @@ Page({
     licImgUrl: '',
     birthDate: '',
     genderIndex: 0,
+    redirectURL: '',
     hasLicImg: false,
     state: 'UNSUBMITTED',
     genders: ['未知', '男', '女', '其他'],
   },
+  onLoad(opt: Record<'redirect', string>) {
+    const o: routing.RegisterOpts = opt
+    if (o.redirect) {
+      this.data.redirectURL = decodeURIComponent(o.redirect)
+    }
+  },
+  
   // 上传驾照
   onUploadLic() {
     wx.chooseMedia({
@@ -31,18 +41,21 @@ Page({
       fail: console.error
     })
   },
+
   // 修改性别
   onGenderChange(e: any) {
     this.setData({
       genderIndex: e.detail.value
     })
   },
+
   // 修改生日
   onBirthDateChange(e: any) {
     this.setData({
       birthDate: e.detail.value
     })
   },
+
   // 提交审查
   onSubmit() {
     this.setData({
@@ -51,8 +64,8 @@ Page({
     setTimeout(() => {
       this.onLicVerified()
     }, 3000)
-    
   },
+
   // 重新审查
   onResubmit() {
     this.setData({
@@ -65,13 +78,18 @@ Page({
       licImgUrl: undefined,
     })
   },
+
   // 前往开锁页面
   onLicVerified() {
     this.setData({
       state: 'VERIFIED'
     })
+
+    const car_id = 'car_id456'
     wx.redirectTo({
-      url: '/pages/lock/lock'
+      url: routing.lock({
+        car_id: car_id
+      })
     })
   }
 })

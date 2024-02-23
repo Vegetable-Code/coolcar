@@ -1,4 +1,5 @@
 import { IAppOption } from "../../appoption"
+import { routing } from "../../utils/routing"
 
 Page({
   isPageShowing: false,
@@ -106,12 +107,24 @@ Page({
   onScanClicked() {
     wx.scanCode({
       success: () => {
-        console.log
+        const carID = 'car123'
+        const redirectURL = routing.lock({
+          car_id: carID
+        })
         wx.navigateTo({
-          url: '/pages/register/register'
+          url: routing.register({
+            redirectURL: redirectURL,
+          })
         })
       },
       fail: console.error
+    })
+  },
+
+  // 进入我的行程
+  onMyTripsTap() {
+    wx.navigateTo({
+      url: routing.mytrips()
     })
   }
 })

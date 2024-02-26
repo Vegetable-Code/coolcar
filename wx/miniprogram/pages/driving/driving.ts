@@ -75,5 +75,9 @@ Page({
   },
 
   // 结束行程
-  onEndTripTap() { }
+  onEndTripTap() {
+    wx.redirectTo({
+      url: routing.mytrips()
+    })
+  }
 })

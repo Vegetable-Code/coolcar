@@ -106,7 +106,8 @@ Page({
   // 扫码租车
   onScanClicked() {
     wx.scanCode({
-      success: () => {
+      success: async () => {
+        await this.selectComponent('#licModal').showModal()
         const carID = 'car123'
         const redirectURL = routing.lock({
           car_id: carID
@@ -126,5 +127,5 @@ Page({
     wx.navigateTo({
       url: routing.mytrips()
     })
-  }
+  },
 })
